@@ -1,4 +1,4 @@
-# SignIn SignUp API in PHP
+# Secure SignIn and SignUp API in PHP
 [![Vishnu Sivadas](https://www.vishnusivadas.com/github/codequality.svg?style=flat)](https://github.com/VishnuSivadasVS)
 
 A secure PHP API to manage signin (login) and signup operations. This API protects from attacks like SQL injunction and XSS. Making development work easier for developers.
