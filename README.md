@@ -14,7 +14,7 @@ $db = new DataBase();
 ```
 Call the dbConnect() and it will return a boolean value which shows whether the database connection is success of not. 
 ```
-$ob->dbConnect();
+$db->dbConnect();
 ```
 Inside the current file check the condition for database connection. If it is true proceed with the rest. Check this sample code.
 ```
