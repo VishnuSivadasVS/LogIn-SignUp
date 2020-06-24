@@ -30,16 +30,16 @@ else{
 Now that the connection is success you can call the login and the signup functions. Use the object of the class DataBase and call the functions.
 
 ### Calling Login Function
-Call the logIn() with the object and pass the username and password as its arguments.
+Call the logIn() with the object and pass the tablename, username and password as its arguments.
 ```
-$db->logIn($username, $password);
+$db->logIn($tablename, $username, $password);
 ```
 
 ### Calling Signup Function
-Call the signUp() with the object and pass fullname, username, password and email as its arguments. You can also chnage the number of arguments as you want, but you will have to change signUp() in the DataBase class accordingly.
+Call the signUp() with the object and pass tablename, fullname, username, password and email as its arguments. You can also chnage the number of arguments as you want, but you will have to change signUp() in the DataBase class accordingly.
 
 ```
-$db->signUp($fullname, $username, $password, $email);
+$db->signUp($tablename, $fullname, $username, $password, $email);
 ```
 
 Feel free to report any issues related to this.
