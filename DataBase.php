@@ -34,11 +34,11 @@ class DataBase
         return mysqli_real_escape_string($this->connect, stripslashes(htmlspecialchars($data)));
     }
 
-    function logIn($username, $password)
+    function logIn($table, $username, $password)
     {
         $username = $this->prepareData($username);
         $password = $this->prepareData($password);
-        $this->sql = "select * from users where username = '$username'";
+        $this->sql = "select * from $table where username = '$username'";
         $result = mysqli_query($this->connect, $this->sql);
         $row = mysqli_fetch_assoc($result);
         $dbusername = $row['username'];
@@ -49,14 +49,14 @@ class DataBase
         return $login;
     }
 
-    function signUp($fullname, $username, $password, $email)
+    function signUp($table, $fullname, $username, $password, $email)
     {
         $fullname = $this->prepareData($fullname);
         $username = $this->prepareData($username);
         $password = $this->prepareData($password);
         $email = $this->prepareData($email);
         $password = password_hash($password, PASSWORD_DEFAULT);
-        $this->sql = "INSERT INTO `users` (`fullname`, `username`, `password`, `email`) VALUES ('$fullname','$username','$password','$email')";
+        $this->sql = "INSERT INTO `$table` (`fullname`, `username`, `password`, `email`) VALUES ('$fullname','$username','$password','$email')";
         if (mysqli_query($this->connect, $this->sql)) {
             return true;
         } else return false;
