@@ -41,7 +41,7 @@ class DataBase
         $this->sql = "select * from " . $table . " where username = '" . $username . "'";
         $result = mysqli_query($this->connect, $this->sql);
         $row = mysqli_fetch_assoc($result);
-        if (mysqli_num_rows($result) < 0) {
+        if (mysqli_num_rows($result) != 0) {
             $dbusername = $row['username'];
             $dbpassword = $row['password'];
             if ($dbusername == $username && password_verify($password, $dbpassword)) {
