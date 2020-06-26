@@ -38,25 +38,29 @@ class DataBase
     {
         $username = $this->prepareData($username);
         $password = $this->prepareData($password);
-        $this->sql = "select * from $table where username = '$username'";
+        $this->sql = "select * from " . $table . " where username = '" . $username . "'";
         $result = mysqli_query($this->connect, $this->sql);
         $row = mysqli_fetch_assoc($result);
-        $dbusername = $row['username'];
-        $dbpassword = $row['password'];
-        if ($dbusername == $username && password_verify($password, $dbpassword)) {
-            $login = true;
+        if (mysqli_num_rows($result) < 0) {
+            $dbusername = $row['username'];
+            $dbpassword = $row['password'];
+            if ($dbusername == $username && password_verify($password, $dbpassword)) {
+                $login = true;
+            } else $login = false;
         } else $login = false;
+
         return $login;
     }
 
-    function signUp($table, $fullname, $username, $password, $email)
+    function signUp($table, $fullname, $email, $username, $password)
     {
         $fullname = $this->prepareData($fullname);
         $username = $this->prepareData($username);
         $password = $this->prepareData($password);
         $email = $this->prepareData($email);
         $password = password_hash($password, PASSWORD_DEFAULT);
-        $this->sql = "INSERT INTO `$table` (`fullname`, `username`, `password`, `email`) VALUES ('$fullname','$username','$password','$email')";
+        $this->sql =
+            "INSERT INTO " . $table . " (fullname, username, password, email) VALUES ('" . $fullname . "','" . $username . "','" . $password . "','" . $email . "')";
         if (mysqli_query($this->connect, $this->sql)) {
             return true;
         } else return false;
