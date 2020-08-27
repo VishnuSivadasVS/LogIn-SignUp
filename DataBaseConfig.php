@@ -13,7 +13,7 @@ class DataBaseConfig
         $this->servername = 'localhost';
         $this->username = 'root';
         $this->password = '';
-        $this->databasename = 'test';
+        $this->databasename = 'loginregister';
 
     }
 }
