@@ -10,6 +10,7 @@ class DataBase
     protected $username;
     protected $password;
     protected $databasename;
+    protected $port;
 
     public function __construct()
     {
@@ -21,11 +22,12 @@ class DataBase
         $this->username = $dbc->username;
         $this->password = $dbc->password;
         $this->databasename = $dbc->databasename;
+        $this->port = $dbc->port;
     }
 
     function dbConnect()
     {
-        $this->connect = mysqli_connect($this->servername, $this->username, $this->password, $this->databasename);
+        $this->connect = mysqli_connect($this->servername, $this->username, $this->password, $this->databasename, $this->port);
         return $this->connect;
     }
 
